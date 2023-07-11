@@ -1,8 +1,10 @@
 import requests
 import sys
 import time
+from tqdm import tqdm
 
 def decode(filename):
+    num_lines = sum(1 for _ in open("../raw_data/" + filename))
     fr = open("../raw_data/" + filename, "r")
     fw = open("../decoded_data/decoded_" + filename, "w")
     fw.write('hex_signature,text_signature\n')
@@ -10,7 +12,7 @@ def decode(filename):
     # Read past header line.
     fr.readline()
 
-    while True:
+    for i in tqdm(range(num_lines) - 1):
         # Get hexcode to decode.
         line = fr.readline()
         if not line:
@@ -30,7 +32,6 @@ def decode(filename):
             json = response.json()
             text_signature = json['results'][0]['text_signature']
             fw.write(hexcode + ',' + text_signature + '\n')
-            print(json['results'][0]['text_signature'])
             response.raise_for_status()
 
         except requests.exceptions.HTTPError as err:

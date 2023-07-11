@@ -19,9 +19,10 @@ The tool parse out the `data` field from a raw CSV file containing the JSON of *
 }
 ```
 
-1. Put raw data files in `/raw_data`.
-2. Provide the filename(s) to decode as command line arguments, 1 or more files.
-3. Decoded CSV files will appear in `/decoded_data` as `decoded_<RAW_FILENAME>` in the format "hex_signature,function_signature".
+1. User `venv` with `source venv/bin/activate`
+2. Put raw data files in `/raw_data`.
+3. Provide the filename(s) to decode as command line arguments, 1 or more files.
+4. Decoded CSV files will appear in `/decoded_data` as `decoded_<RAW_FILENAME>` in the format "hex_signature,function_signature".
 
 **Notes:**
 - Data is parsed out as the first 10 characters succeeding the raw string `""data"":""`.

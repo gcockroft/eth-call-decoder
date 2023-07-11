@@ -2,7 +2,7 @@
 A tool for bulk decoding the function signature of `eth_call` requests through hexcode signature lookups in the [Ethereum Signature Database](https://www.4byte.directory/). 
 
 ## Usage
-The tool parses out the `data` field from a raw CSV file containing the JSON of *all* `eth_call` request data. Example input line:
+The tool parse out the `data` field from a raw CSV file containing the JSON of *all* `eth_call` request data. Example input line:
 ```javascript
 {
     ""method"":""eth_call"",

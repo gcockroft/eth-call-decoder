@@ -12,7 +12,7 @@ def decode(filename):
     # Read past header line.
     fr.readline()
 
-    for i in tqdm(range(num_lines) - 1):
+    for i in tqdm(range(num_lines - 1)):
         # Get hexcode to decode.
         line = fr.readline()
         if not line:

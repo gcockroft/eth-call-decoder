@@ -2,7 +2,7 @@
 A tool for bulk decoding the function signature of `eth_call` requests through hexcode signature lookups in the [Ethereum Signature Database](https://www.4byte.directory/). 
 
 ## Usage
-The tool parse out the `data` field from a raw CSV file containing the JSON of *all* `eth_call` request data. Example input line:
+The tool parses out the `data` field from a raw CSV file containing the JSON of *all* `eth_call` request data. Example input line:
 ```javascript
 {
     ""method"":""eth_call"",
@@ -22,9 +22,14 @@ The tool parse out the `data` field from a raw CSV file containing the JSON of *
 1. Activate `venv` with `source venv/bin/activate`
 2. Put raw data files in `/raw_data`.
 3. `cd` into `src`.
-3. Provide the filename(s) to decode as command line arguments, 1 or more files e.g. `python3 main.py <RAW_FILENAME.csv>`.
-4. Decoded CSV files will appear in `/decoded_data` as `decoded_<RAW_FILENAME>` in the format "hex_signature,function_signature".
+4. Provide the filename(s) to decode as command line arguments, 1 or more files e.g. `python3 main.py <RAW_FILENAME.csv>`.
+
+### Result
+Two files will appear in `/decoded_data`.
+1. `decoded_<FILENAME>`, a csv file in the format \(hexcode,function signature\).
+2. `counts_<FILENAME>`, a csv file in the format \(# of occurences,function signature\).
 
 **Notes:**
-- Data is parsed out as the first 10 characters succeeding the raw string `""data"":""`.
-- The decoder sleeps repeatedly to avoid 429 errors, increasing runtime.
+- 
+- Data is parsed out as the first 8 characters succeeding the raw string the regular expression `(?<=data)(.*)0x`.
+- Some lines are malformed so `line.json()["data"]` did not work.

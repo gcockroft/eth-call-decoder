@@ -1,0 +1,5 @@
+calls,function
+16,tryAggregate(bool,(address,bytes)[])
+67,watch_tg_invmru_119a5a98(address,uint256,uint256)
+4,resolver(bytes32)
+8,balanceOfBatch(address[],uint256[])
